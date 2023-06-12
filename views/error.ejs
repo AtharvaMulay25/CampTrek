@@ -1,0 +1,12 @@
+<!-- This render an error template with message and error stack -->
+<% layout("layouts/boilerplate") %>
+<div class="row">
+    <!-- changed the offset and cols -->
+    <div class="col-9 offset-2">
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading"><%=err.message%></h4>
+            <!-- included error stack for development purposes -->
+            <p><%= err.stack %></p> 
+        </div>
+    </div>
+</div>
