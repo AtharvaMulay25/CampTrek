@@ -5,7 +5,7 @@ const cities = require('./cities')
 const {descriptors, places} = require('./seedHelpers');
 
 //use local development database
-mongoose.connect('mongodb://localhost:27017/camp-trek',);
+mongoose.connect('mongodb://127.0.0.1:27017/camp-trek',);
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));   //checking for errors
