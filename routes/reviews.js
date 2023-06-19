@@ -4,36 +4,24 @@ const catchAsync = require("../utilities/catchAsync")
 const ExpressError = require("../utilities/ExpressError");
 const Review = require("../models/review");
 const Campground = require("../models/campground");
-const {reviewSchema} = require("../schemas");
+const {validateReview, isLoggedIn, isReviewAuthor} = require('../middleware')
 
-//middleware for validating review model using reviewSchema
-const validateReview = (req, res, next)=>
-{
-    const {error} = reviewSchema.validate(req.body);
-    if(error)
-    {
-        const msg = error.details.map(e=>e.message).join(",");
-        throw new ExpressError(msg, 400);
-    }
-    else
-    {
-        next();
-    }
-}
 
-router.post('/', validateReview, catchAsync(async(req, res)=>
+
+router.post('/', isLoggedIn, validateReview, catchAsync(async(req, res)=>
 {
     const {id} = req.params;
     const campground = await Campground.findById(id);
     const review = new Review(req.body.review);
+    review.author = req.user._id;
     campground.reviews.push(review);
     await campground.save();
     await review.save();
-    req.flash('success','Created new review')
+    req.flash('success','Created new review!')
     res.redirect(`/campgrounds/${campground._id}`);
 }))
 
-router.delete('/:reviewId', catchAsync(async(req, res)=>
+router.delete('/:reviewId', isLoggedIn, isReviewAuthor, catchAsync(async(req, res)=>
 {
     // console.log("delete me");
     const {id, reviewId} = req.params;
@@ -43,4 +31,4 @@ router.delete('/:reviewId', catchAsync(async(req, res)=>
     req.flash('success','Successfully deleted review')
     res.redirect(`/campgrounds/${id}`);
 }))
-module.exports = router;
+module.exports = router;    

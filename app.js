@@ -61,6 +61,8 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
+
+//setting locals, for use in templates
 //defining a middleware for using flash, it need to be done before route handlers
 app.use((req,res,next)=>{
     //console.log("!!Hit")

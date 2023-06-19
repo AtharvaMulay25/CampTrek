@@ -37,6 +37,7 @@ router.post('/login',storeReturnTo,passport.authenticate('local',{failureFlash:t
     res.redirect(redirectUrl);
 })
 
+//*******************there is no next added here in callback, code can break
 router.get('/logout',(req,res)=>{
     req.logout(function (err){
         if(err){
