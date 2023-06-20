@@ -1,4 +1,11 @@
 /*Followed MVC approach, to set up files */
+
+if(process.env.NODE_ENV !== 'production')
+{
+    require('dotenv').config()  //this would add environment vars to process.env
+}
+
+
 const express  = require('express')
 const mongoose = require('mongoose')
 const methodOverride = require('method-override');

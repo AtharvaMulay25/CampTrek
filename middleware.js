@@ -50,6 +50,7 @@ module.exports.isReviewAuthor = async(req, res, next)=>
 //middleware for validating campground model using campgroundSchema
 module.exports.validateCampground = (req, res, next)=>
 {
+    console.log(req.body)
     const {error} = campgroundSchema.validate(req.body);
     if(error)
     {
