@@ -23,6 +23,17 @@ const CampgroundSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'User'
         },
+        geometry:{
+            type: {
+                type:String,
+                enum:['Point'],
+                required:true
+            },
+            coordinates:{
+                type:[Number],
+                required:true
+            }
+        },
         reviews:[
             {
                 type: Schema.Types.ObjectId,

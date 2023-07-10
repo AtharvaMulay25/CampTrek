@@ -1,8 +1,11 @@
 <% layout('layouts/boilerplate') %>
 <!-- using starability css for displaying star ratings -->
+
+
 <link rel="stylesheet" href="/stylesheets/stars.css">
     <div class="row">
         <div class="col-6 ">
+            <div id="map" style="width:400px;height: 300px;"></div>
             <div id="campgroundCarousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <% campground.images.forEach((img, i) => {  %>
@@ -112,3 +115,20 @@
     <!-- <footer>
     <a href="/campgrounds">All Campgrounds</a>
 </footer> -->
+
+<script>
+    const mapToken='<%- process.env.MAPBOX_TOKEN %>';
+    const campground=<%- JSON.stringify(campground) %>;
+</script>
+<script src="/javascripts/showPageMap.js">
+    // TO MAKE THE MAP APPEAR YOU MUST
+    // ADD YOUR ACCESS TOKEN FROM
+    // https://account.mapbox.com
+    // mapboxgl.accessToken = '<%- process.env.MAPBOX_TOKEN %>';
+    // const map = new mapboxgl.Map({
+    // container: 'map', // container ID
+    // style: 'mapbox://styles/mapbox/streets-v12', // style URL
+    // center: [-74.5, 40], // starting position [lng, lat]
+    // zoom: 9, // starting zoom
+    // });
+</script>
