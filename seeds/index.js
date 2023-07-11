@@ -20,7 +20,7 @@ const seedDB = async ()=>
 {
     //here deleting campgrounds don't delete associated reviews*************
     await Campground.deleteMany({});
-    for (let i = 0; i < 50; i++)
+    for (let i = 0; i < 200; i++)
     {
         const random1000 = Math.floor(Math.random() * 1000);
         const price=Math.floor(Math.random() *30)+10;
@@ -29,7 +29,10 @@ const seedDB = async ()=>
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,
             description:"Nice init'",
-            geometry:{type:'Point',coordinates:[-119.571615,37.737363]},
+            geometry:{
+                type:'Point',
+                coordinates:[cities[random1000].longitude,cities[random1000].latitude]
+            },
             price: price, 
             images: [
                 {
