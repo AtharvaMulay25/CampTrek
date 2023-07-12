@@ -7,6 +7,8 @@ mapboxgl.accessToken = mapToken;
     zoom: 9, // starting zoom
     });
 
+map.addControl(new mapboxgl.NavigationControl(),'bottom-left');
+
 new mapboxgl.Marker()
 .setLngLat(campground.geometry.coordinates)
 .setPopup(

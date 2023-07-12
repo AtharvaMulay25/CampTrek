@@ -1,4 +1,47 @@
 <% layout('layouts/boilerplate')%>
+<div class="container d-flex justify-content-center align-items-center mt-5" >
+    <div class="col"><!-- in video he has used row -->
+        <!-- <h1>This a very very long heading for no reason at All</h1> -->
+        <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+            <div class="card shadow">
+                <img src="https://cdna.artstation.com/p/assets/images/images/055/564/436/large/thomas-roisland-jeep-14.jpg?1667248738" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">Register</h5>
+                    <form action="/register" method="POST" class="validated-form">
+                        <div class="mb-3">
+                            <label class="form-label" for="username">Username</label>
+                            <input class="form-control" type="text" id="username" name="username" autofocus required>
+                            <div class="valid-feedback">
+                                Looks good!!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="email">Email</label>
+                            <input class="form-control" type="text" id="email" name="email" required>
+                            <div class="valid-feedback">
+                                Looks good!!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="password">Password</label>
+                            <input class="form-control" type="password" id="password" name="password" required>
+                            <div class="valid-feedback">
+                                Looks good!!
+                            </div>
+                        </div>
+                        <button class="btn btn-success btn-block">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- <% layout('layouts/boilerplate')%>
 <h1>Register</h1>
 <form action="/register" method="POST" class="validated-form">
     <div class="mb-3">
@@ -23,4 +66,4 @@
         </div>
     </div>
     <button class="btn btn-success">Register</button>
-</form>
+</form> -->
