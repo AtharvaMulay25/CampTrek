@@ -21,8 +21,10 @@ const User=require('./models/user')
 const campgroundRoutes=require('./routes/campgrounds')
 const reviewRoutes=require('./routes/reviews')
 const userRoutes=require('./routes/users')
-//use local development database
-mongoose.connect('mongodb://127.0.0.1:27017/camp-trek').then(()=>
+
+//use local development database ('mongodb://127.0.0.1:27017/camp-trek')
+// console.log(process.env.MONGO_URI);
+mongoose.connect(process.env.MONGO_URI).then(()=>
 {
     console.log("Connection Established!");
 });

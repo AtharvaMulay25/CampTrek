@@ -26,8 +26,12 @@ body{
     color: white;
     border-bottom-color: white;
 }
-
-#btn-secondary, #btn-secondary:hover{
+#btn-secondary
+{
     color: #333;
+}
+#btn-secondary:hover{
+    /* color: #333; */
     text-shadow: none;
+    background-color: burlywood;
 }

@@ -3,9 +3,12 @@ const mongoose = require('mongoose')
 const Campground = require("../models/campground")
 const cities = require('./cities')
 const {descriptors, places} = require('./seedHelpers');
-
+if(process.env.NODE_ENV !== 'production')
+{
+    require('dotenv').config()  //this would add environment vars to process.env
+}
 //use local development database
-mongoose.connect('mongodb://127.0.0.1:27017/camp-trek',);
+mongoose.connect(process.env.MONGO_URI);
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));   //checking for errors
@@ -25,7 +28,7 @@ const seedDB = async ()=>
         const random1000 = Math.floor(Math.random() * 1000);
         const price=Math.floor(Math.random() *30)+10;
         const camp = new Campground({
-            author: "648f56687c85978fb86b8dd0", 
+            author: "64904dbff2c4e5e270f2fe8c", 
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,
             description:"Nice init'",
