@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV !== 'production')
+{
+    require('dotenv').config()  //this would add environment vars to process.env
+}
 const Campground = require("../models/campground");
 const mbxGeocoding=require("@mapbox/mapbox-sdk/services/geocoding")
 const mapBoxToken=process.env.MAPBOX_TOKEN;
